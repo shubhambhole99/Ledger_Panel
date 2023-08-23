@@ -11,11 +11,7 @@ const itemRoutes = require('./routes/itemRoutes');
 const expenseRoutes = require('./routes/expenseRoutes');
 
 
-
-
-
-
-
+const port = process.env.PORT || 9001;
 
 const app = express();
 
@@ -28,8 +24,11 @@ app.use('/product', productRoutes);
 app.use('/item', itemRoutes);
 app.use('/expense', expenseRoutes);
 
-const port = process.env.PORT || 9001;
 
+
+app.use("/",(req,res)=>{
+    res.json({message:"hello"})
+})
 
 async function bootServer() {
     try {
