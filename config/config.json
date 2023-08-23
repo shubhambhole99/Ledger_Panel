@@ -1,0 +1,25 @@
+{
+  "development": {
+    "username": "u266083227_feasibility",
+    "password": "feasibility@1A",
+    "database": "u266083227_feasibility",
+    "host": "89.117.188.204",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "u266083227_feasibility",
+    "password": "feasibility@1A",
+    "database": "u266083227_feasibility",
+    "host": "89.117.188.204",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "u266083227_feasibility",
+    "password": "feasibility@1A",
+    "database": "u266083227_feasibility",
+    "host": "89.117.188.204",
+    "dialect": "mysql"
+  }
+}
+
+
