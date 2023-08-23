@@ -28,7 +28,7 @@ app.use('/product', productRoutes);
 app.use('/item', itemRoutes);
 app.use('/expense', expenseRoutes);
 
-const port=3000
+const port = process.env.PORT || 9001;
 
 
 async function bootServer() {
