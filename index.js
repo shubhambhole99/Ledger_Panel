@@ -31,18 +31,25 @@ app.use("/",(req,res)=>{
     // console.log(port)
 })
 
-async function bootServer() {
-    try {
-      const mysql = await db.sequelizeDB;
+
+const mysql = await db.sequelizeDB;
       await mysql.sync();
       app.listen(port, () => {
         console.log(`Listening on: http://localhost:${port}`);
       });
-    } catch (err) {
-      console.error(err);
-    }
-  }
+
+// async function bootServer() {
+//     try {
+//       const mysql = await db.sequelizeDB;
+//       await mysql.sync();
+//       app.listen(port, () => {
+//         console.log(`Listening on: http://localhost:${port}`);
+//       });
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   }
   
-  bootServer();
+//   bootServer();
 
 module.exports = app;
