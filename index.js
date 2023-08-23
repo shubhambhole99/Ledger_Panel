@@ -2,27 +2,14 @@ const express = require('express');
 // const dbconnection = require("./config/sqlconfig");
 // routes
 
-
+const db = require('./config/initializeDB');
 const Item = require('./models/item');
 const userRoutes = require('./routes/userRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const productRoutes = require('./routes/productRoutes');
 const itemRoutes = require('./routes/itemRoutes');
+const expenseRoutes = require('./routes/expenseRoutes');
 
-
-// sequelize
-const Sequelize = require('sequelize');
-const config = require('./config/config.json');
-
-const env = process.env.NODE_ENV || 'development';
-const dbConfig = config[env];
-
-console.log(dbConfig)
-
-const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
-  host: dbConfig.host,
-  dialect: dbConfig.dialect
-});
 
 
 
@@ -39,21 +26,23 @@ app.use('/user', userRoutes);
 app.use('/order', orderRoutes);
 app.use('/product', productRoutes);
 app.use('/item', itemRoutes);
+app.use('/expense', expenseRoutes);
 
-// const port=3000
-// app.listen(port, () => {
-//     console.table([
-//         {
-//             port: `${port}`
-//         }
-//     ])
-// })
+const port=3000
 
 
-sequelize.sync().then(() => {
-    app.listen(3000, () => {
-      console.log('Server is running on port 3000');
-    });
-  });
+async function bootServer() {
+    try {
+      const mysql = await db.sequelizeDB;
+      await mysql.sync();
+      app.listen(port, () => {
+        console.log(`Listening on: http://localhost:${port}`);
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  
+  bootServer();
 
-module.exports = {sequelize,app};
+module.exports = app;
