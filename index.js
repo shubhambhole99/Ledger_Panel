@@ -27,7 +27,8 @@ app.use('/expense', expenseRoutes);
 
 
 app.use("/",(req,res)=>{
-    res.json({message:"hello"})
+    res.json({message:port})
+    // console.log(port)
 })
 
 async function bootServer() {
