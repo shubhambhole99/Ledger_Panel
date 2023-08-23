@@ -33,10 +33,10 @@ app.use("/",(req,res)=>{
 
 
 const mysql = await db.sequelizeDB;
-      await mysql.sync();
-      app.listen(port, () => {
-        console.log(`Listening on: http://localhost:${port}`);
-      });
+await mysql.sync();
+    //   app.listen(port, () => {
+    //     console.log(`Listening on: http://localhost:${port}`);
+    //   });
 
 // async function bootServer() {
 //     try {
