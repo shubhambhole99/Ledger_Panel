@@ -1,6 +1,5 @@
 const express = require('express');
-// const dbconnection = require("./config/sqlconfig");
-// routes
+
 
 const db = require('./config/initializeDB');
 const Item = require('./models/item');
@@ -32,24 +31,24 @@ app.use("/",(req,res)=>{
 })
 
 
-const mysql = await db.sequelizeDB;
-await mysql.sync();
+// const mysql = await db.sequelizeDB;
+// await mysql.sync();
     //   app.listen(port, () => {
     //     console.log(`Listening on: http://localhost:${port}`);
     //   });
 
-// async function bootServer() {
-//     try {
-//       const mysql = await db.sequelizeDB;
-//       await mysql.sync();
-//       app.listen(port, () => {
-//         console.log(`Listening on: http://localhost:${port}`);
-//       });
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   }
+async function bootServer() {
+    try {
+      const mysql = await db.sequelizeDB;
+      await mysql.sync();
+      app.listen(port, () => {
+        console.log(`Listening on: http://localhost:${port}`);
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
   
-//   bootServer();
+  bootServer();
 
 module.exports = app;
